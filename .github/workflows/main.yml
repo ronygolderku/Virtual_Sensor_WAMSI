@@ -7,7 +7,9 @@ on:
 jobs:
   run-script:
     runs-on: ubuntu-latest
-
+    env:
+      COPERNICUS_USERNAME: ${{ secrets.COPERNICUS_USERNAME }}
+      COPERNICUS_PASSWORD: ${{ secrets.COPERNICUS_PASSWORD }}
     steps:
     - name: Checkout repository
       uses: actions/checkout@v4
