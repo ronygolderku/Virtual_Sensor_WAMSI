@@ -12,6 +12,8 @@ data = copernicusmarine.open_dataset(
     maximum_longitude=115.590368,
     minimum_latitude=-32.086885,
     maximum_latitude=-32.086885,
+    username="mgolder",
+    password="G@DVH26uGtb3BBq"
 )
 
 # Extract last date available
@@ -31,6 +33,8 @@ data = copernicusmarine.open_dataset(
     maximum_latitude=-32.086885,
     start_datetime=f"{first_date}T00:00:00",
     end_datetime=f"{last_date}T00:00:00",
+    username="mgolder",
+    password="G@DVH26uGtb3BBq"
 )
 
 # Conversion to CSV
