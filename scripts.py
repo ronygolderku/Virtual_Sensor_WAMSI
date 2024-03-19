@@ -1,5 +1,8 @@
+import os
 import numpy as np
 import copernicusmarine
+username = os.getenv('COPERNICUS_USERNAME')
+password = os.getenv('COPERNICUS_PASSWORD')
 
 # Remotely open the whole dataset
 data = copernicusmarine.open_dataset(
