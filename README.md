@@ -8,12 +8,15 @@ The Python script performs the following tasks:
 
 1. Opens the Copernicus Marine dataset remotely.
 2. Extracts the first and last dates available in the dataset.
-3. 
-<iframe src="https://rpubs.com/ronygolderku/1165490" width="100%" height="500px"></iframe>
-
-3. Opens the dataset for the last available date.
+3. Opens the dataset for the last available date. 
 4. Converts the dataset to a Pandas DataFrame.
 5. Saves the DataFrame to a CSV file with the name formatted as `output_<last_date>.csv`.
+
+## Data Source and Data Point Position
+- [Data point position in the Map](https://rpubs.com/ronygolderku/1165490) Explore the data point positions on the interactive map.
+- [Source of the data](https://data.marine.copernicus.eu/product/OCEANCOLOUR_GLO_BGC_L4_MY_009_104/download?dataset=cmems_obs-oc_glo_bgc-plankton_my_l4-gapfree-multi-4km_P1D_202311) Access the data from the Copernicus Marine Environment Monitoring Service.
+
+
 
 ## Files
 
