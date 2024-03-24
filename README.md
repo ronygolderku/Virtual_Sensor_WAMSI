@@ -47,8 +47,9 @@ To run the script manually, follow these steps:
 
 ## Author
 
-This script was authored by [Your Name].
+This script was authored by **Md Rony Golder**.
 
 ## License
 
-This project is licensed under the [License Name] License - see the [LICENSE](LICENSE) file for details.
+This project is licensed under the **MIT License** - see the LICENSE file for details.
+
