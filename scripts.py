@@ -1,6 +1,9 @@
 import os
 import numpy as np
 import copernicusmarine
+import boto3
+from botocore.exceptions import ClientError
+
 username = os.getenv('COPERNICUS_USERNAME')
 password = os.getenv('COPERNICUS_PASSWORD')
 
