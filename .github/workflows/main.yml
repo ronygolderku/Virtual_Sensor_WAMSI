@@ -22,7 +22,7 @@ jobs:
     - name: Install dependencies
       run: |
         python -m pip install --upgrade pip
-        pip install pandas requests numpy copernicusmarine
+        pip install pandas requests numpy copernicusmarine boto3
 
     - name: Execute Python script
       run: python scripts.py
