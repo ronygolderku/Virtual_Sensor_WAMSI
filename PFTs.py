@@ -23,8 +23,11 @@ s3_folder = 'SH20221201_Westport_Deliverables/Raw_Data/Virtual_Sensor/PFTs/'
 
 data= copernicusmarine.open_dataset(
     dataset_id="cmems_obs-oc_glo_bgc-plankton_my_l4-multi-4km_P1M",
-    variables=["CHL", "DIATO", "DINO", "GREEN", "HAPTO", "MICRO", "NANO", "PICO", "PROCHLO", "PROKAR"]
+    variables=["CHL", "DIATO", "DINO", "GREEN", "HAPTO", "MICRO", "NANO", "PICO", "PROCHLO", "PROKAR"],
+    username=username,
+    password=password,
 )
+
 last_date = np.datetime_as_string(data.time[-1].values, unit='D')
 
 #Exract the first date available
@@ -48,7 +51,9 @@ for index, row in points.iterrows():
         minimum_latitude=latitude,
         maximum_latitude=latitude,
         start_datetime=f"{first_date}T00:00:00",
-        end_datetime=f"{last_date}T00:00:00")
+        end_datetime=f"{last_date}T00:00:00",
+        username=username,
+        password=password)
     data.to_dataframe().to_csv(f"{output_name}_point_{index + 1}.csv")
 
 
