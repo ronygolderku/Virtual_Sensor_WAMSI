@@ -21,66 +21,35 @@ bucket_name = 'wamsi-westport-project-1'
 s3_folder = 'SH20221201_Westport_Deliverables/Raw_Data/Virtual_Sensor/PFTs/'
 
 
-def sort_dimension(dataset, dim_name):
-    """
-    Get the values for the specified dimension and verify if they are unsorted. If so, the function sorts them.
-    """
-    # Get the coordinate values for the specified dimension.
-    coordinates = dataset[dim_name].values
+data= copernicusmarine.open_dataset(
+    dataset_id="cmems_obs-oc_glo_bgc-plankton_my_l4-multi-4km_P1M",
+    variables=["CHL", "DIATO", "DINO", "GREEN", "HAPTO", "MICRO", "NANO", "PICO", "PROCHLO", "PROKAR"]
+)
+last_date = np.datetime_as_string(data.time[-1].values, unit='D')
 
-    # Check if the coordinates are unsorted.
-    if (coordinates[0] >= coordinates[:-1]).all():
-        dataset = dataset.sortby(dim_name, ascending=True)
-        
-    return dataset
+#Exract the first date available
+first_date = np.datetime_as_string(data.time[0].values, unit='D')
 
-dataframe_coordinates = pd.read_csv("points.csv", sep = ',')
+points = pd.read_csv('points.txt', sep="\t")
+
+output_name ='CMEMS_PFTs'
 
 
-list_datasetID= ["cmems_obs-oc_glo_bgc-plankton_my_l4-multi-4km_P1M"]
-
-# Output names
-output_names = [
-    'CMEMS_PFTs',
-]
-
-# Variables
-variables = ["CHL", "DIATO", "DINO", "GREEN", "HAPTO", "MICRO", "NANO", "PICO", "PROCHLO", "PROKAR"]
-output_dir = "Data/"
-# Create directory if doesn't exist
-if not os.path.exists(output_dir):
-    os.makedirs(output_dir)
-
-# Assuming dataframe_coordinates is defined elsewhere
-# iterating over the datasets
-for dataset_id, output_name in zip(list_datasetID, output_names):
-
-    # Read dataset with CMC
-    dataset = copernicusmarine.open_dataset(dataset_id=dataset_id, username='mgolder', password="G@DVH26uGtb3BBq")
-
-    # Select surface and rename dimensions
-    for coordinate in dataset.coords:
-        if coordinate == 'lon':
-            dataset = dataset.rename({'lon': 'longitude'})
-        if coordinate == 'lat':
-            dataset = dataset.rename({'lat': 'latitude'})
-
-    # Sort axis that were inverted
-    dataset = sort_dimension(dataset, 'latitude')
-    dataset = sort_dimension(dataset, 'longitude')
-
-    # Update start and end times
-    first_date = np.datetime_as_string(dataset.time[0].values, unit='D')
-    last_date = np.datetime_as_string(dataset.time[-1].values, unit='D')
-
-    # Download data
-    for row in zip(dataframe_coordinates['latitude'], dataframe_coordinates['longitude'], dataframe_coordinates.index):
-        # Do the subset
-        dataset_point = dataset[variables].sel(time=slice(first_date, last_date)).sel(latitude=row[0], longitude=row[1], method="nearest")
-        # Save in .csv
-        dataset_point.to_dataframe().to_csv(output_dir + output_name + f"point_{row[2]+1}.csv")
-        # Save in .nc
-        #dataset_point.to_netcdf(output_dir + output_name + f"point_{row[2]}.nc")
+for index, row in points.iterrows():
+    # Extract information from the row
+    longitude = row['longitude']
+    latitude = row['latitude']
+    # Download data using the extracted information
+    data=copernicusmarine.open_dataset(
+        dataset_id="cmems_obs-oc_glo_bgc-plankton_my_l4-multi-4km_P1M",
+        variables= ["CHL", "DIATO", "DINO", "GREEN", "HAPTO", "MICRO", "NANO", "PICO", "PROCHLO", "PROKAR"],
+        minimum_longitude=longitude,
+        maximum_longitude=longitude,
+        minimum_latitude=latitude,
+        maximum_latitude=latitude,
+        start_datetime=f"{first_date}T00:00:00",
+        end_datetime=f"{last_date}T00:00:00")
+    data.to_dataframe().to_csv(f"{output_name}_point_{index + 1}.csv")
 
 
 for file_name in os.listdir(output_dir):
