@@ -52,9 +52,9 @@ for index, row in points.iterrows():
     data.to_dataframe().to_csv(f"{output_name}_point_{index + 1}.csv")
 
 
-for file_name in os.listdir(output_dir):
+for file_name in os.listdir():
     if file_name.endswith('.csv'):  # Upload only CSV files
-        csv_file_path = os.path.join(output_dir, file_name)
+        csv_file_path = os.path.join(file_name) 
         
         # Upload the CSV file to S3
         try:
