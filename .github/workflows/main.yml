@@ -26,8 +26,11 @@ jobs:
         python -m pip install --upgrade pip
         pip install pandas requests numpy copernicusmarine boto3
 
-    - name: Execute Python script
+    - name: Execute Python for Phytoplankton Functional Types
       run: python PFTs.py
+
+    - name: Execute Python for Transparency 
+      run: python transp.py
 
     - name: Commit and push if there are changes
       run: |
