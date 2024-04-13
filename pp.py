@@ -23,7 +23,7 @@ s3_folder = 'SH20221201_Westport_Deliverables/Raw_Data/Virtual_Sensor/PP/'
 
 ds=xr.open_dataset('https://coastwatch.pfeg.noaa.gov/erddap/griddap/erdMH1pp1day')
 ds=ds.sel(latitude=slice(-31, -32), longitude=slice(114,116))
-
+print(ds)
 points = pd.read_csv('points.txt', sep="\t")
 output_name ='MODIS_PP'
 
