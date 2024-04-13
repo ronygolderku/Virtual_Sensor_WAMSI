@@ -22,8 +22,8 @@ s3_folder = 'SH20221201_Westport_Deliverables/Raw_Data/Virtual_Sensor/PFTs/'
 
 
 data= copernicusmarine.open_dataset(
-    dataset_id="cmems_obs-oc_glo_bgc-plankton_my_l4-multi-4km_P1M",
-    variables=["CHL", "DIATO", "DINO", "GREEN", "HAPTO", "MICRO", "NANO", "PICO", "PROCHLO", "PROKAR"],
+    dataset_id="c3s_obs-oc_glo_bgc-plankton_my_l3-multi-4km_P1D",
+    variables=["CHL", "MICRO", "NANO", "PICO"],
     username=username,
     password=password,
 )
@@ -44,8 +44,8 @@ for index, row in points.iterrows():
     latitude = row['latitude']
     # Download data using the extracted information
     data=copernicusmarine.open_dataset(
-        dataset_id="cmems_obs-oc_glo_bgc-plankton_my_l4-multi-4km_P1M",
-        variables= ["CHL", "DIATO", "DINO", "GREEN", "HAPTO", "MICRO", "NANO", "PICO", "PROCHLO", "PROKAR"],
+        dataset_id="c3s_obs-oc_glo_bgc-plankton_my_l3-multi-4km_P1D",
+        variables= ["CHL", "MICRO", "NANO", "PICO"],
         minimum_longitude=longitude,
         maximum_longitude=longitude,
         minimum_latitude=latitude,
