@@ -22,8 +22,8 @@ s3_folder = 'SH20221201_Westport_Deliverables/Raw_Data/Virtual_Sensor/Transp/'
 
 
 data= copernicusmarine.open_dataset(
-    dataset_id="cmems_obs-oc_glo_bgc-transp_my_l4-multi-4km_P1M",
-    variables=["KD490", "SPM", "ZSD"],
+    dataset_id="cmems_obs-oc_glo_bgc-transp_my_l4-gapfree-multi-4km_P1D",
+    variables=["KD490", "ZSD"],
     username=username,
     password=password,
 )
@@ -35,7 +35,7 @@ first_date = np.datetime_as_string(data.time[0].values, unit='D')
 
 points = pd.read_csv('points.txt', sep="\t")
 
-output_name ='CMEMS_Transp'
+output_name ='CMEMS_KD490_ZSD'
 
 
 for index, row in points.iterrows():
@@ -44,8 +44,8 @@ for index, row in points.iterrows():
     latitude = row['latitude']
     # Download data using the extracted information
     data=copernicusmarine.open_dataset(
-        dataset_id="cmems_obs-oc_glo_bgc-transp_my_l4-multi-4km_P1M",
-        variables= ["KD490", "SPM", "ZSD"],
+        dataset_id="cmems_obs-oc_glo_bgc-transp_my_l4-gapfree-multi-4km_P1D",
+        variables= ["KD490", "ZSD"],
         minimum_longitude=longitude,
         maximum_longitude=longitude,
         minimum_latitude=latitude,
