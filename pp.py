@@ -1,12 +1,13 @@
 import os
 import numpy as np
-import copernicusmarine
+#import copernicusmarine
+import xarray as xr
 import pandas as pd
 import boto3
 from botocore.exceptions import ClientError
 
-username = os.getenv('COPERNICUS_USERNAME')
-password = os.getenv('COPERNICUS_PASSWORD')
+# username = os.getenv('COPERNICUS_USERNAME')
+# password = os.getenv('COPERNICUS_PASSWORD')
 
 aws_access_key = os.environ.get("AWS_ACCESS_KEY_ID")
 aws_secret_key = os.environ.get("AWS_SECRET_ACCESS_KEY")
@@ -20,40 +21,18 @@ s3_client = session.client('s3', endpoint_url='https://projects.pawsey.org.au')
 bucket_name = 'wamsi-westport-project-1'
 s3_folder = 'SH20221201_Westport_Deliverables/Raw_Data/Virtual_Sensor/PP/'
 
-
-data= copernicusmarine.open_dataset(
-    dataset_id="cmems_obs-oc_glo_bgc-pp_my_l4-multi-4km_P1M",
-    variables=["PP"],
-    username=username,
-    password=password,
-)
-
-last_date = np.datetime_as_string(data.time[-1].values, unit='D')
-
-#Exract the first date available
-first_date = np.datetime_as_string(data.time[0].values, unit='D')
+ds=xr.open_dataset('https://coastwatch.pfeg.noaa.gov/erddap/griddap/erdMH1pp1day')
+ds=ds.sel(latitude=slice(-31, -32), longitude=slice(114,116))
 
 points = pd.read_csv('points.txt', sep="\t")
-
-output_name ='CMEMS_PP'
-
+output_name ='MODIS_PP'
 
 for index, row in points.iterrows():
     # Extract information from the row
     longitude = row['longitude']
     latitude = row['latitude']
     # Download data using the extracted information
-    data=copernicusmarine.open_dataset(
-        dataset_id="cmems_obs-oc_glo_bgc-pp_my_l4-multi-4km_P1M",
-        variables= ["PP"],
-        minimum_longitude=longitude,
-        maximum_longitude=longitude,
-        minimum_latitude=latitude,
-        maximum_latitude=latitude,
-        start_datetime=f"{first_date}T00:00:00",
-        end_datetime=f"{last_date}T00:00:00",
-        username=username,
-        password=password)
+    data=ds.sel(latitude=latitude, longitude=longitude, method='nearest')
     data.to_dataframe().to_csv(f"{output_name}_point_{index + 1}.csv")
 
 
