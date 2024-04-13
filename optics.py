@@ -18,11 +18,11 @@ s3_client = session.client('s3', endpoint_url='https://projects.pawsey.org.au')
 
 # Specify the S3 bucket and folder
 bucket_name = 'wamsi-westport-project-1'
-s3_folder = 'SH20221201_Westport_Deliverables/Raw_Data/Virtual_Sensor/Opctics/'
+s3_folder = 'SH20221201_Westport_Deliverables/Raw_Data/Virtual_Sensor/Optics/'
 
 
 data= copernicusmarine.open_dataset(
-    dataset_id="cmems_obs-oc_glo_bgc-optics_my_l4-multi-4km_P1M",
+    dataset_id="cmems_obs-oc_glo_bgc-optics_my_l3-multi-4km_P1D",
     variables=["BBP", "CDM"],
     username=username,
     password=password,
@@ -35,7 +35,7 @@ first_date = np.datetime_as_string(data.time[0].values, unit='D')
 
 points = pd.read_csv('points.txt', sep="\t")
 
-output_name ='CMEMS_Optics'
+output_name ='CMEMS_BBP_CDM'
 
 
 for index, row in points.iterrows():
@@ -44,7 +44,7 @@ for index, row in points.iterrows():
     latitude = row['latitude']
     # Download data using the extracted information
     data=copernicusmarine.open_dataset(
-        dataset_id="cmems_obs-oc_glo_bgc-optics_my_l4-multi-4km_P1M",
+        dataset_id="cmems_obs-oc_glo_bgc-optics_my_l3-multi-4km_P1D",
         variables= ["BBP", "CDM"],
         minimum_longitude=longitude,
         maximum_longitude=longitude,
