@@ -24,25 +24,25 @@ jobs:
     - name: Install dependencies
       run: |
         python -m pip install --upgrade pip
-        pip install pandas requests numpy copernicusmarine boto3 xarray netcdf4 pydap
+        pip install pandas requests numpy copernicusmarine boto3
 
-    # - name: Execute Python for Phytoplankton Functional Types
-    #   run: python PFTs.py
+    - name: Execute Python for Phytoplankton Functional Types
+      run: python PFTs.py
 
-    # - name: Execute Python for Transparency 
-    #   run: python transp.py
+    - name: Execute Python for Transparency 
+      run: python transp.py
 
-    # - name: Execute Python for Optics 
-    #   run: python optics.py
+    - name: Execute Python for Optics 
+      run: python optics.py
 
-    # - name: Execute Python for Temperature_cmems
-    #   run: python sst.py
+    - name: Execute Python for Temperature_cmems
+      run: python sst.py
          
-    - name: Execute Python for PP 
-      run: python pp.py
+    # - name: Execute Python for PP 
+    #   run: python pp.py
 
-    - name: Execute Python for MUR SST 
-      run: python ghrsst.py
+    # - name: Execute Python for MUR SST 
+    #   run: python ghrsst.py
 
     - name: Commit and push if there are changes
       run: |
