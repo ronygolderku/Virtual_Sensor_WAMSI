@@ -1,21 +1,21 @@
-# Automated Python Script
+# Make virtual sensor with satellite data
 
-This repository contains a Python script that automates the process of downloading and processing data from the Copernicus Marine dataset. The script retrieves chlorophyll-a (CHL) data for a specific geographical area and time range, converts it to a CSV file, and schedules the execution using GitHub Actions.
+This repository contains a Python script that automates the process of downloading and processing data from the Copernicus Marine dataset and ERDDAP. The script retrieves long-term temperature and bio-optical data for a specific geographical area and time range, converts it to a CSV file, and schedules the execution using GitHub Actions.
 
 ## Script Overview
 
 The Python script performs the following tasks:
 
-1. Opens the Copernicus Marine dataset remotely.
+1. Opens the Copernicus Marine and NOAA dataset remotely.
 2. Extracts the first and last dates available in the dataset.
 3. Opens the dataset for the last available date. 
 4. Converts the dataset to a Pandas DataFrame.
-5. Saves the DataFrame to a CSV file with the name formatted as `CHL_<last_date>.csv`.
+5. Saves the DataFrame to a CSV file.
 6. Uploads the CSV file to an AWS S3 bucket.
 
 ## Data Source and Data Point Position
-- [Data point position in the Map](https://rpubs.com/ronygolderku/1165520) Explore the data point positions on the interactive map.
-- [Source of the data](https://data.marine.copernicus.eu/product/OCEANCOLOUR_GLO_BGC_L4_MY_009_104/download?dataset=cmems_obs-oc_glo_bgc-plankton_my_l4-gapfree-multi-4km_P1D_202311) Access the data from the Copernicus Marine Environment Monitoring Service.
+- [Data point position in the Map](https://ronygolderku.github.io/cs_map/) Explore the data point positions on the interactive map.
+- [Source of the data](https://data.marine.copernicus.eu/) Access the data from the Copernicus Marine Environment Monitoring Service.
 
 ## AWS Integration
 
@@ -26,10 +26,7 @@ The script also integrates with AWS S3 for storing the processed data. Here are 
 - **S3 Bucket Name**: `wamsi-westport-project-1`
 - **S3 Folder Path**: `SH20221201_Westport_Deliverables/Raw_Data/Virtual_Sensor/`
 
-## Files
 
-- `scripts.py`: Python script containing the automated data retrieval, processing, and upload logic.
-- `main.yml`: GitHub Actions workflow file for scheduling script execution.
 
 ## Usage
 
