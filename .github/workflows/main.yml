@@ -36,13 +36,7 @@ jobs:
       run: python optics.py
 
     - name: Execute Python for Temperature_cmems
-      run: python sst.py
-         
-    # - name: Execute Python for PP 
-    #   run: python pp.py
-
-    # - name: Execute Python for MUR SST 
-    #   run: python ghrsst.py
+      run: python sst.py.
 
     - name: Commit and push if there are changes
       run: |
