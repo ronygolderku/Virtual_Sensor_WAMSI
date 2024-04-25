@@ -24,7 +24,7 @@ jobs:
     - name: Install dependencies
       run: |
         python -m pip install --upgrade pip
-        pip install pandas requests numpy copernicusmarine boto3
+        pip install pandas requests numpy copernicusmarine boto3 geopandas rioxarray
 
     - name: Execute Python for Phytoplankton Functional Types
       run: python PFTs.py
