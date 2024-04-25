@@ -8,10 +8,10 @@ jobs:
   run-script:
     runs-on: ubuntu-latest
     env:
-      COPERNICUS_USERNAME: ${{ secrets.COPERNICUS_USERNAME }}
-      COPERNICUS_PASSWORD: ${{ secrets.COPERNICUS_PASSWORD }}
-      AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
-      AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+      COPERNICUS_USERNAME: ${{secrets.COPERNICUS_USERNAME}}
+      COPERNICUS_PASSWORD: ${{secrets.COPERNICUS_PASSWORD}}
+      AWS_ACCESS_KEY_ID: ${{secrets.AWS_ACCESS_KEY_ID}}
+      AWS_SECRET_ACCESS_KEY: ${{secrets.AWS_SECRET_ACCESS_KEY}}
     steps:
     - name: Checkout repository
       uses: actions/checkout@v4
@@ -56,4 +56,7 @@ jobs:
         git config --local user.name "GitHub Action"
         git add -A
         git commit -m "Automated data update" || echo "No changes to commit"
-        git push
+        git fetch --all
+        git rebase origin/main
+        git push origin main || echo "Push failed, please check for conflicts or remote updates"
+    
