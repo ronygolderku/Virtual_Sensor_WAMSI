@@ -26,26 +26,26 @@ jobs:
         python -m pip install --upgrade pip
         pip install pandas requests numpy copernicusmarine boto3 geopandas rioxarray
 
-    # - name: Execute Python for Phytoplankton Functional Types Points
-    #   run: python PFTs.py
+    - name: Execute Python for Phytoplankton Functional Types Points
+      run: python PFTs.py
 
     - name: Execute Python for Phytoplankton Functional Types for polygon
       run: python PFTs_poly.py
 
-    # - name: Execute Python for Transparency 
-    #   run: python transp.py
+    - name: Execute Python for Transparency 
+      run: python transp.py
 
     - name: Execute Python for Transparency  for polygon
       run: python transp_poly.py
 
-    # - name: Execute Python for Optics 
-    #   run: python optics.py
+    - name: Execute Python for Optics 
+      run: python optics.py
 
     - name: Execute Python for Optics for polygon
       run: python optics_poly.py
 
-    # - name: Execute Python for Temperature_cmems
-    #   run: python sst.py
+    - name: Execute Python for Temperature_cmems
+      run: python sst.py
 
     - name: Execute Python for Temperature_cmems for polygon
       run: python sst_poly.py
