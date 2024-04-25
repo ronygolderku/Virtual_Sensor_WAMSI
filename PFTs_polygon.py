@@ -32,7 +32,6 @@ ds= copernicusmarine.open_dataset(
     maximum_longitude=115.75,
     minimum_latitude=-32.77,
     maximum_latitude=-31.44)
-)
 
 shapefiles = [
     "shapefile/Polygons_1_MultiPolygon.shp",
