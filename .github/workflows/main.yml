@@ -41,13 +41,13 @@ jobs:
     # - name: Execute Python for Optics 
     #   run: python optics.py
 
-    - name: Execute Python for Optics 
+    - name: Execute Python for Optics for polygon
       run: python optics_poly.py
 
     # - name: Execute Python for Temperature_cmems
     #   run: python sst.py
 
-    - name: Execute Python for Temperature_cmems
+    - name: Execute Python for Temperature_cmems for polygon
       run: python sst_poly.py
 
     - name: Commit and push if there are changes
