@@ -46,6 +46,7 @@ output_name ='CMEMS_PFTs'
 
 for idx, shapefile in enumerate(shapefiles):
     gdf = gpd.read_file(shapefile).geometry.to_list()
+    ds.rio.write_crs("epsg:4326", inplace=True)
     polygon = ds.rio.clip(gdf, crs="epsg:4326")
     polygon_mean= polygon.mean(dim=['latitude', 'longitude'])
     polygon_mean = polygon_mean.drop(['spatial_ref', 'Equirectangular'])
