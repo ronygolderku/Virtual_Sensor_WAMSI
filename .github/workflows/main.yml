@@ -30,7 +30,7 @@ jobs:
     #   run: python PFTs.py
 
     - name: Execute Python for Phytoplankton Functional Types for polygon
-      run: python PFTs_polygon.py
+      run: python PFTs_poly.py
 
     # - name: Execute Python for Transparency 
     #   run: python transp.py
