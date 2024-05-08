@@ -23,7 +23,7 @@ bucket_name = 'wamsi-westport-project-1'
 s3_folder = 'SH20221201_Westport_Deliverables/Raw_Data/Virtual_Sensor/Temp_poly/2007_present/'
 
 
-data= copernicusmarine.open_dataset(
+ds= copernicusmarine.open_dataset(
     dataset_id="METOFFICE-GLO-SST-L4-NRT-OBS-SST-V2",
     variables=["analysed_sst"],
     username=username,
