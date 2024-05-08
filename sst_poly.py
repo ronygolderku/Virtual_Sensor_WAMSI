@@ -23,9 +23,9 @@ bucket_name = 'wamsi-westport-project-1'
 s3_folder = 'SH20221201_Westport_Deliverables/Raw_Data/Virtual_Sensor/Temp_poly/2007_present/'
 
 
-ds= copernicusmarine.open_dataset(
-    dataset_id="cmems_obs-oc_glo_bgc-transp_my_l4-gapfree-multi-4km_P1D",
-    variables=["KD490", "ZSD"],
+data= copernicusmarine.open_dataset(
+    dataset_id="METOFFICE-GLO-SST-L4-NRT-OBS-SST-V2",
+    variables=["analysed_sst"],
     username=username,
     password=password,
     minimum_longitude=115.10,
