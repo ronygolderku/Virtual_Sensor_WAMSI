@@ -65,47 +65,50 @@ shapefiles = [
     "shapefile/Polygons_6_MultiPolygon.shp"
 ]
 
-
 process_and_upload_dataset(
-    dataset_id="cmems_obs-oc_glo_bgc-plankton_my_l3-multi-4km_P1D",
-    variables=["CHL", "DIATO", "DINO", "GREEN", "HAPTO", "MICRO", "NANO", "PICO", "PROCHLO", "PROKAR"],
-    output_name="CMEMS_planktons",
-    s3_folder="SH20221201_Westport_Deliverables/Raw_Data/Virtual_Sensor/Plankton/Polygon/",
+    dataset_id="cmems_mod_glo_bgc-car_anfc_0.25deg_P1D-m",
+    variables=["dissic", "ph", "talk"],
+    output_name="CMEMS_car",
+    s3_folder="SH20221201_Westport_Deliverables/Raw_Data/Virtual_Sensor/Model_car/Polygon/",
     shapefiles=shapefiles,
 )
 
 process_and_upload_dataset(
-    dataset_id="cmems_obs-oc_glo_bgc-transp_my_l3-multi-4km_P1D",
-    variables=["KD490", "ZSD", "SPM"],
-    output_name="CMEMS_transp",
-    s3_folder="SH20221201_Westport_Deliverables/Raw_Data/Virtual_Sensor/Transp/Polygon/",
+    dataset_id="cmems_mod_glo_bgc-nut_anfc_0.25deg_P1D-m",
+    variables=["fe", "no3", "po4", "si"],
+    output_name="CMEMS_nut",
+    s3_folder="SH20221201_Westport_Deliverables/Raw_Data/Virtual_Sensor/Model_Nut/Polygon/",
     shapefiles=shapefiles,
 )
 
 process_and_upload_dataset(
-    dataset_id="cmems_obs-oc_glo_bgc-reflectance_my_l3-multi-4km_P1D",
-    variables=["RRS412", "RRS443", "RRS490", "RRS555", "RRS670"],
-    output_name="CMEMS_reflectance",
-    s3_folder="SH20221201_Westport_Deliverables/Raw_Data/Virtual_Sensor/Reflectance/Polygon/",
+    dataset_id="cmems_mod_glo_bgc-co2_anfc_0.25deg_P1D-m",
+    variables=["spco2"],
+    output_name="CMEMS_co2",
+    s3_folder="SH20221201_Westport_Deliverables/Raw_Data/Virtual_Sensor/Model_co2/Polygon/",
     shapefiles=shapefiles,
 )
 
 process_and_upload_dataset(
-    dataset_id="cmems_obs-oc_glo_bgc-optics_my_l3-multi-4km_P1D",
-    variables=["BBP", "CDM"],
+    dataset_id="cmems_mod_glo_bgc-bio_anfc_0.25deg_P1D-m",
+    variables=["nppv", "o2"],
+    output_name="CMEMS_bio",
+    s3_folder="SH20221201_Westport_Deliverables/Raw_Data/Virtual_Sensor/Model_bio/Polygon/",
+    shapefiles=shapefiles,
+)
+
+process_and_upload_dataset(
+    dataset_id="cmems_mod_glo_bgc-pft_anfc_0.25deg_P1D-m",
+    variables=["chl", "phyc"],
+    output_name="CMEMS_pft",
+    s3_folder="SH20221201_Westport_Deliverables/Raw_Data/Virtual_Sensor/Model_pft/Polygon/",
+    shapefiles=shapefiles,
+)
+
+process_and_upload_dataset(
+    dataset_id="cmems_mod_glo_bgc-optics_anfc_0.25deg_P1D-m",
+    variables=["kd"],
     output_name="CMEMS_optics",
-    s3_folder="SH20221201_Westport_Deliverables/Raw_Data/Virtual_Sensor/Optics/Polygon/",
+    s3_folder="SH20221201_Westport_Deliverables/Raw_Data/Virtual_Sensor/Model_optics/Polygon/",
     shapefiles=shapefiles,
 )
-
-process_and_upload_dataset(
-    dataset_id="cmems_obs-oc_glo_bgc-pp_my_l4-multi-4km_P1M",
-    variables=["PP"],
-    output_name="CMEMS_PP",
-    s3_folder="SH20221201_Westport_Deliverables/Raw_Data/Virtual_Sensor/PP/Polygon/",
-    shapefiles=shapefiles,
-)
-
-
-
-
