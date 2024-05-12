@@ -27,7 +27,7 @@ jobs:
         pip install pandas requests numpy copernicusmarine boto3 geopandas rioxarray
 
     - name: Execute Python for Phytoplankton Functional Types Points
-      run: python test.py
+      run: python Model.py
 
     # - name: Execute Python for Phytoplankton Functional Types for polygon
     #   run: python PFTs_poly.py
