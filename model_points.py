@@ -114,3 +114,11 @@ process_and_upload_dataset(
     s3_folder="SH20221201_Westport_Deliverables/Raw_Data/Virtual_Sensor/Model_optics/Points/",
     points=points,
 )
+
+process_and_upload_dataset(
+    dataset_id="cmems_mod_glo_phy-so_anfc_0.083deg_PT6H-i",
+    variables=["so"],
+    output_name="CMEMS_Salt",
+    s3_folder="SH20221201_Westport_Deliverables/Raw_Data/Virtual_Sensor/Model_salinity/Points/",
+    points=points,
+)
