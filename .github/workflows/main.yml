@@ -29,14 +29,14 @@ jobs:
     # - name: Execute Python for Globcolor Polygon
     #   run: python Globcolor.py
 
-    - name: Execute Python for Model Output Polygon
-      run: python Model.py
+    # - name: Execute Python for Model Output Polygon
+    #   run: python Model.py
 
     # - name: Execute Python Globcolor Points
     #   run: python Globcolor_points.py
 
-    # - name: Execute Python Model Points
-    #   run: python model_points.py
+    - name: Execute Python Model Points
+      run: python model_points.py
 
     # - name: Execute Python for Optics 
     #   run: python optics.py
