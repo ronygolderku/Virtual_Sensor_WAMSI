@@ -26,11 +26,11 @@ jobs:
         python -m pip install --upgrade pip
         pip install pandas requests numpy copernicusmarine boto3 geopandas rioxarray
 
-    - name: Execute Python for Phytoplankton Functional Types Points
-      run: python Model.py
+    - name: Execute Python for Globcolor Polygon
+      run: python Globcolor.py
 
-    # - name: Execute Python for Phytoplankton Functional Types for polygon
-    #   run: python PFTs_poly.py
+    - name: Execute Python for Model Output Polygon
+      run: python Model.py
 
     # - name: Execute Python for Transparency 
     #   run: python transp.py
