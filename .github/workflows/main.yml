@@ -33,8 +33,8 @@ jobs:
     #   run: python Model.py
 
     - name: Execute Python Globcolor Points
-      run: python Globcolot_points.py
-      
+      run: python Globcolor_points.py
+
     # - name: Execute Python for Transparency  for polygon
     #   run: python transp_poly.py
 
