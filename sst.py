@@ -21,17 +21,17 @@ bucket_name = 'wamsi-westport-project-1'
 s3_folder = 'SH20221201_Westport_Deliverables/Raw_Data/Virtual_Sensor/Temperature/Points/'
 
 
-data= copernicusmarine.open_dataset(
-    dataset_id="METOFFICE-GLO-SST-L4-NRT-OBS-SST-V2",
-    variables=["analysed_sst"],
-    username=username,
-    password=password,
-)
+# data= copernicusmarine.open_dataset(
+#     dataset_id="METOFFICE-GLO-SST-L4-NRT-OBS-SST-V2",
+#     variables=["analysed_sst"],
+#     username=username,
+#     password=password,
+# )
 
-last_date = np.datetime_as_string(data.time[-1].values, unit='D')
+# last_date = np.datetime_as_string(data.time[-1].values, unit='D')
 
-#Exract the first date available
-first_date = np.datetime_as_string(data.time[0].values, unit='D')
+# #Exract the first date available
+# first_date = np.datetime_as_string(data.time[0].values, unit='D')
 
 points = pd.read_csv('points.txt', sep="\t")
 
@@ -50,8 +50,6 @@ for index, row in points.iterrows():
         maximum_longitude=longitude,
         minimum_latitude=latitude,
         maximum_latitude=latitude,
-        start_datetime=f"{first_date}T00:00:00",
-        end_datetime=f"{last_date}T00:00:00",
         username=username,
         password=password)
     data.to_dataframe().to_csv(f"{output_name}_point_{index + 1}.csv")
