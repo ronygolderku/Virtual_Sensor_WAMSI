@@ -26,29 +26,23 @@ jobs:
         python -m pip install --upgrade pip
         pip install pandas requests numpy copernicusmarine boto3 geopandas rioxarray
 
-    # - name: Execute Python for Globcolor Polygon
-    #   run: python Globcolor.py
+    - name: Execute Python for Globcolor Polygon
+      run: python Globcolor.py
 
-    # - name: Execute Python for Model Output Polygon
-    #   run: python Model.py
+    - name: Execute Python for Model Output Polygon
+      run: python Model.py
 
-    # - name: Execute Python Globcolor Points
-    #   run: python Globcolor_points.py
+    - name: Execute Python Globcolor Points
+      run: python Globcolor_points.py
 
     - name: Execute Python Model Points
       run: python model_points.py
 
-    # - name: Execute Python for Optics 
-    #   run: python optics.py
+    - name: Execute Python for Temperature_cmems
+      run: python sst.py
 
-    # - name: Execute Python for Optics for polygon
-    #   run: python optics_poly.py
-
-    # - name: Execute Python for Temperature_cmems
-    #   run: python sst.py
-
-    # - name: Execute Python for Temperature_cmems for polygon
-    #   run: python sst_poly.py
+    - name: Execute Python for Temperature_cmems for polygon
+      run: python sst_poly.py
 
     - name: Commit and push if there are changes
       run: |
