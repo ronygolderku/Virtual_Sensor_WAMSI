@@ -19,6 +19,17 @@ def process_and_upload_dataset(dataset_id, variables, output_name, s3_folder, po
     s3_client = session.client('s3', endpoint_url='https://projects.pawsey.org.au')
     bucket_name = 'wamsi-westport-project-1'
 
+    # Open dataset
+    data = copernicusmarine.open_dataset(
+        dataset_id=dataset_id,
+        variables=variables,
+        username=username,
+        password=password,
+    )
+
+    last_date = np.datetime_as_string(data.time[-1].values, unit='D')
+    first_date = np.datetime_as_string(data.time[0].values, unit='D')
+
     for index, row in points.iterrows():
         # Extract information from the row
         longitude = row['longitude']
@@ -32,6 +43,8 @@ def process_and_upload_dataset(dataset_id, variables, output_name, s3_folder, po
             maximum_longitude=longitude,
             minimum_latitude=latitude,
             maximum_latitude=latitude,
+            start_datetime=f"{first_date}T00:00:00",
+            end_datetime=f"{last_date}T00:00:00",
             username=username,
             password=password
         )
