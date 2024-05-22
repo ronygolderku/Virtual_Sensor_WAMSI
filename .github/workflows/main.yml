@@ -38,14 +38,14 @@ jobs:
     # - name: Execute Python Model Points
     #   run: python model_points.py
 
-    # - name: Execute Python for Temperature_cmems
-    #   run: python sst.py
+    - name: Execute Python for Temperature_cmems
+      run: python sst.py
 
     # - name: Execute Python for Temperature_cmems for polygon
     #   run: python sst_poly.py
 
-    - name: Execute Python for sentinel for points
-      run: python sentinel_point.py
+    # - name: Execute Python for sentinel for points
+    #   run: python sentinel_point.py
 
     - name: Commit and push if there are changes
       run: |
