@@ -44,8 +44,14 @@ jobs:
     # - name: Execute Python for Temperature_cmems for polygon
     #   run: python sst_poly.py
 
-    - name: Execute Python for sentinel for points
-      run: python sentinel_point.py
+    # - name: Execute Python for sentinel for points
+    #   run: python sentinel_point.py
+
+    - name: Execute Python for sentinel for offshore polygon
+      run: python sentinel_offshore.py
+
+    - name: Execute Python for sentinel for nearshore polygon
+      run: python sentinel_nearshore.py
 
     - name: Commit and push if there are changes
       run: |
