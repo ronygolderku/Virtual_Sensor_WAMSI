@@ -34,17 +34,17 @@ ds= copernicusmarine.open_dataset(
     maximum_latitude=-30)
 
 shapefiles = [
-    "CS_polygon/CS_polygon_1_Multipolygon.shp",
-    "CS_polygon/CS_polygon_2_Multipolygon.shp",
-    "CS_polygon/CS_polygon_3_Multipolygon.shp",
-    "CS_polygon/CS_polygon_4_Multipolygon.shp",
-    "CS_polygon/CS_polygon_5_Multipolygon.shp",
-    "CS_polygon/CS_polygon_6_Multipolygon.shp"
-    "CS_polygon/CS_polygon_7_Multipolygon.shp"
-    "CS_polygon/CS_polygon_8_Multipolygon.shp"
-    "CS_polygon/CS_polygon_9_Multipolygon.shp"
-    "CS_polygon/CS_polygon_10_Multipolygon.shp"
-    "CS_polygon/CS_polygon_11_Multipolygon.shp"
+    "CS_polygon/CS_polygon_1_MultiPolygon.shp",
+    "CS_polygon/CS_polygon_2_MultiPolygon.shp",
+    "CS_polygon/CS_polygon_3_MultiPolygon.shp",
+    "CS_polygon/CS_polygon_4_MultiPolygon.shp",
+    "CS_polygon/CS_polygon_5_MultiPolygon.shp",
+    "CS_polygon/CS_polygon_6_MultiPolygon.shp"
+    "CS_polygon/CS_polygon_7_MultiPolygon.shp"
+    "CS_polygon/CS_polygon_8_MultiPolygon.shp"
+    "CS_polygon/CS_polygon_9_MultiPolygon.shp"
+    "CS_polygon/CS_polygon_10_MultiPolygon.shp"
+    "CS_polygon/CS_polygon_11_MultiPolygon.shp"
 ]
 
 output_name ="CMEMS_OLCI_CHL",
