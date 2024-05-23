@@ -39,12 +39,12 @@ shapefiles = [
     "CS_polygon/CS_polygon_3_MultiPolygon.shp",
     "CS_polygon/CS_polygon_4_MultiPolygon.shp",
     "CS_polygon/CS_polygon_5_MultiPolygon.shp",
-    "CS_polygon/CS_polygon_6_MultiPolygon.shp"
-    "CS_polygon/CS_polygon_7_MultiPolygon.shp"
-    "CS_polygon/CS_polygon_8_MultiPolygon.shp"
-    "CS_polygon/CS_polygon_9_MultiPolygon.shp"
-    "CS_polygon/CS_polygon_10_MultiPolygon.shp"
-    "CS_polygon/CS_polygon_11_MultiPolygon.shp"
+    "CS_polygon/CS_polygon_6_MultiPolygon.shp",
+    "CS_polygon/CS_polygon_7_MultiPolygon.shp",
+    "CS_polygon/CS_polygon_8_MultiPolygon.shp",
+    "CS_polygon/CS_polygon_9_MultiPolygon.shp",
+    "CS_polygon/CS_polygon_10_MultiPolygon.shp",
+    "CS_polygon/CS_polygon_11_MultiPolygon.shp",
 ]
 
 output_name ="CMEMS_OLCI_CHL",
