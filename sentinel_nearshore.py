@@ -47,7 +47,7 @@ shapefiles = [
     "CS_polygon/CS_polygon_11_MultiPolygon.shp",
 ]
 
-output_name ="CMEMS_OLCI_CHL",
+output_name ="CMEMS_OLCI_CHL"
 
 for idx, shapefile in enumerate(shapefiles):
     gdf = gpd.read_file(shapefile).geometry.to_list()
