@@ -17,7 +17,7 @@ def process_and_upload_dataset(dataset_id, variables, output_name, s3_folder, po
     # Create an S3 client
     session = boto3.Session()
     s3_client = session.client('s3', endpoint_url='https://projects.pawsey.org.au')
-    bucket_name = 'wamsi-westport-project-1'
+    bucket_name = 'wamsi-westport-project-1-1'
 
     # Open dataset
     data = copernicusmarine.open_dataset(
@@ -73,7 +73,7 @@ process_and_upload_dataset(
     dataset_id="cmems_obs-oc_glo_bgc-plankton_my_l3-olci-300m_P1D",
     variables=["CHL"],
     output_name="CMEMS_OLCI_CHL",
-    s3_folder="SH20221201_Westport_Deliverables/Raw_Data/Virtual_Sensor/Sentinel/Points/",
+    s3_folder="csiem-data/data-lake/ESA/Sentinel/Points/",
     points=points,
 )
 

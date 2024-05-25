@@ -19,8 +19,8 @@ session = boto3.Session()
 s3_client = session.client('s3', endpoint_url='https://projects.pawsey.org.au')
 
 # Specify the S3 bucket and folder
-bucket_name = 'wamsi-westport-project-1'
-s3_folder = 'SH20221201_Westport_Deliverables/Raw_Data/Virtual_Sensor/Sentinel/Polygon_offshore/'
+bucket_name = 'wamsi-westport-project-1-1'
+s3_folder = 'csiem-data/data-lake/ESA/Sentinel/Polygon_offshore/'
 
 
 ds= copernicusmarine.open_dataset(

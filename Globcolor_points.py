@@ -17,7 +17,7 @@ def process_and_upload_dataset(dataset_id, variables, output_name, s3_folder, po
     # Create an S3 client
     session = boto3.Session()
     s3_client = session.client('s3', endpoint_url='https://projects.pawsey.org.au')
-    bucket_name = 'wamsi-westport-project-1'
+    bucket_name = 'wamsi-westport-project-1-1'
 
     # Open dataset
     data = copernicusmarine.open_dataset(
@@ -73,7 +73,7 @@ process_and_upload_dataset(
     dataset_id="cmems_obs-oc_glo_bgc-plankton_my_l3-multi-4km_P1D",
     variables=["CHL", "DIATO", "DINO", "GREEN", "HAPTO", "MICRO", "NANO", "PICO", "PROCHLO", "PROKAR"],
     output_name="CMEMS_planktons",
-    s3_folder="SH20221201_Westport_Deliverables/Raw_Data/Virtual_Sensor/Plankton/Points/",
+    s3_folder="csiem-data/data-lake/ESA/GlobColor/Plankton/Points/",
     points=points,
 )
 
@@ -81,7 +81,7 @@ process_and_upload_dataset(
     dataset_id="cmems_obs-oc_glo_bgc-transp_my_l3-multi-4km_P1D",
     variables=["KD490", "ZSD", "SPM"],
     output_name="CMEMS_transp",
-    s3_folder="SH20221201_Westport_Deliverables/Raw_Data/Virtual_Sensor/Transp/Point/",
+    s3_folder="csiem-data/data-lake/ESA/GlobColor/Transp/Point/",
     points=points,
 )
 
@@ -89,7 +89,7 @@ process_and_upload_dataset(
     dataset_id="cmems_obs-oc_glo_bgc-reflectance_my_l3-multi-4km_P1D",
     variables=["RRS412", "RRS443", "RRS490", "RRS555", "RRS670"],
     output_name="CMEMS_reflectance",
-    s3_folder="SH20221201_Westport_Deliverables/Raw_Data/Virtual_Sensor/Reflectance/Point/",
+    s3_folder="csiem-data/data-lake/ESA/GlobColor/Reflectance/Point/",
     points=points,
 )
 
@@ -97,7 +97,7 @@ process_and_upload_dataset(
     dataset_id="cmems_obs-oc_glo_bgc-optics_my_l3-multi-4km_P1D",
     variables=["BBP", "CDM"],
     output_name="CMEMS_optics",
-    s3_folder="SH20221201_Westport_Deliverables/Raw_Data/Virtual_Sensor/Optics/Point/",
+    s3_folder="csiem-data/data-lake/ESA/GlobColor/Optics/Point/",
     points=points,
 )
 
@@ -105,6 +105,6 @@ process_and_upload_dataset(
     dataset_id="cmems_obs-oc_glo_bgc-pp_my_l4-multi-4km_P1M",
     variables=["PP"],
     output_name="CMEMS_PP",
-    s3_folder="SH20221201_Westport_Deliverables/Raw_Data/Virtual_Sensor/PP/Point/",
+    s3_folder="csiem-data/data-lake/ESA/GlobColor/PP/Point/",
     points=points,
 )

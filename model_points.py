@@ -16,7 +16,7 @@ def process_and_upload_dataset(dataset_id, variables, output_name, s3_folder, po
     # Create an S3 client
     session = boto3.Session()
     s3_client = session.client('s3', endpoint_url='https://projects.pawsey.org.au')
-    bucket_name = 'wamsi-westport-project-1'
+    bucket_name = 'wamsi-westport-project-1-1'
 
     for index, row in points.iterrows():
         # Extract information from the row
@@ -58,7 +58,7 @@ process_and_upload_dataset(
     dataset_id="cmems_mod_glo_bgc-car_anfc_0.25deg_P1D-m",
     variables=["dissic", "ph", "talk"],
     output_name="CMEMS_car",
-    s3_folder="SH20221201_Westport_Deliverables/Raw_Data/Virtual_Sensor/Model_car/Points/",
+    s3_folder="csiem-data/data-lake/MOI/PISCES/Model_car/Points/",
     points=points,
 )
 
@@ -66,7 +66,7 @@ process_and_upload_dataset(
     dataset_id="cmems_mod_glo_bgc-nut_anfc_0.25deg_P1D-m",
     variables=["fe", "no3", "po4", "si"],
     output_name="CMEMS_nut",
-    s3_folder="SH20221201_Westport_Deliverables/Raw_Data/Virtual_Sensor/Model_Nut/Points/",
+    s3_folder="csiem-data/data-lake/MOI/PISCES/Model_Nut/Points/",
     points=points,
 )
 
@@ -74,7 +74,7 @@ process_and_upload_dataset(
     dataset_id="cmems_mod_glo_bgc-co2_anfc_0.25deg_P1D-m",
     variables=["spco2"],
     output_name="CMEMS_co2",
-    s3_folder="SH20221201_Westport_Deliverables/Raw_Data/Virtual_Sensor/Model_co2/Points/",
+    s3_folder="csiem-data/data-lake/MOI/PISCES/Model_co2/Points/",
     points=points,
 )
 
@@ -82,7 +82,7 @@ process_and_upload_dataset(
     dataset_id="cmems_mod_glo_bgc-bio_anfc_0.25deg_P1D-m",
     variables=["nppv", "o2"],
     output_name="CMEMS_bio",
-    s3_folder="SH20221201_Westport_Deliverables/Raw_Data/Virtual_Sensor/Model_bio/Points/",
+    s3_folder="csiem-data/data-lake/MOI/PISCES/Model_bio/Points/",
     points=points,
 )
 
@@ -90,7 +90,7 @@ process_and_upload_dataset(
     dataset_id="cmems_mod_glo_bgc-pft_anfc_0.25deg_P1D-m",
     variables=["chl", "phyc"],
     output_name="CMEMS_pft",
-    s3_folder="SH20221201_Westport_Deliverables/Raw_Data/Virtual_Sensor/Model_pft/Points/",
+    s3_folder="csiem-data/data-lake/MOI/PISCES/Model_pft/Points/",
     points=points,
 )
 
@@ -98,7 +98,7 @@ process_and_upload_dataset(
     dataset_id="cmems_mod_glo_bgc-optics_anfc_0.25deg_P1D-m",
     variables=["kd"],
     output_name="CMEMS_optics",
-    s3_folder="SH20221201_Westport_Deliverables/Raw_Data/Virtual_Sensor/Model_optics/Points/",
+    s3_folder="csiem-data/data-lake/MOI/PISCES/Model_optics/Points/",
     points=points,
 )
 
@@ -106,6 +106,6 @@ process_and_upload_dataset(
     dataset_id="cmems_mod_glo_phy-so_anfc_0.083deg_PT6H-i",
     variables=["so"],
     output_name="CMEMS_Salt",
-    s3_folder="SH20221201_Westport_Deliverables/Raw_Data/Virtual_Sensor/Model_salinity/Points/",
+    s3_folder="csiem-data/data-lake/MOI/NEMO/Model_salinity/Points/",
     points=points,
 )
