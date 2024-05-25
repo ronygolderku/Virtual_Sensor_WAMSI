@@ -117,7 +117,7 @@ These dependencies are automatically installed using the provided GitHub Actions
         │       └── ZOO (Zooplankton)
         └── 🌊 NEMO
             └── 💧 Salinity
-
+```
 
 ## How to Run
 
