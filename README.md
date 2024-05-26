@@ -48,7 +48,7 @@ The script requires the following Python libraries:
 
 These dependencies are automatically installed using the provided GitHub Actions workflow file (`main.yml`).
 
-# Folder Sturcture
+## Folder Sturcture
 
 ```markdown
 📦
