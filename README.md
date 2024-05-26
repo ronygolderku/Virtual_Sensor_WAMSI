@@ -1,21 +1,22 @@
-# Make virtual sensor with satellite data
+# Make virtual sensor with satellite data in CS
+There are numerous sensors currently deployed around Cockburn Sound (CS) that provide continuous data streams of oceanic and atmospheric parameters. These data streams are often accessible through data centers and agencies such as BOM, DWER, WAMSI, and UWA and so on. Despite these extensive monitoring efforts, in situ data may not always be available for specific areas of interest. For example, assessing the environmental impact of on going development activities (WESTPORT) requires data from regions outside of the immediate CS environment.
 
-This repository contains a Python script that automates the process of downloading and processing data from the Copernicus Marine dataset and ERDDAP. The script retrieves long-term temperature and bio-optical data for a specific geographical area and time range, converts it to a CSV file, and schedules the execution using GitHub Actions.
+Setting up sensors in those locations is expensive, including the costs of purchase, deployment, and ongoing maintenance. 
+To address these challenges, using satellite data to create virtual sensors offers a viable solution for monitoring surface environmental conditions at locations where physical sensors cannot be installed. Satellite data can provide comprehensive and continuous coverage, overcoming the limitations of in situ sensor deployment and enabling effective environmental monitoring.
 
-## Script Overview
-
-The Python script performs the following tasks:
-
-1. Opens the Copernicus Marine and NASA dataset remotely.
-2. Extracts the first and last dates available in the dataset.
-3. Opens the dataset for the last available date. 
-4. Converts the dataset to a Pandas DataFrame.
-5. Saves the DataFrame to a CSV file.
-6. Uploads the CSV file to an AWS S3 bucket.
+## About this repo
+This repository contains Python scripts designed to automate the downloading and processing of data from several key agencies: the *European Space Agency (ESA)*, *UK Met Office (UKMO)*, *NASA*, *Mercator Ocean International (MOI)*. The scripts are capable of retrieving long-term datasets for specified geographical areas [points, polygons] and time ranges, converting the data into CSV files, and scheduling the execution using GitHub Actions. The final processed data is then stored in the **Pawsey** S3 bucket.
 
 ## Data Source and Data Point Position
 - [Data point position in the Map](https://ronygolderku.github.io/cs_map/) Explore the data point positions on the interactive map.
-- [Source of the data](https://data.marine.copernicus.eu/) Access the data from the Copernicus Marine Environment Monitoring Service.
+
+## Data Sources
+
+- [ESA](https://data.marine.copernicus.eu/): GLOBCOLOR (resolution: 4km) and Sentinel (resolution: 300m) marine environment products.
+- [MOI](https://data.marine.copernicus.eu/): Numerious MODEL output
+- [UKMO](https://data.marine.copernicus.eu/): Access data from OSTIA temperature (resolution: 0.05 °) products.
+- [NASA](https://coastwatch.pfeg.noaa.gov/erddap/griddap/): Access data from the Group for High-Resolution Sea Surface Temperature (GHRSST (resolution: 0.01 °)) and MODIS (resolution: 4km) through ERDDAP.
+
 
 ## AWS Integration
 
@@ -41,82 +42,85 @@ The script requires the following Python libraries:
 - numpy
 - copernicusmarine
 - boto3
+- geopandas
+- rioxarray
+
 
 These dependencies are automatically installed using the provided GitHub Actions workflow file (`main.yml`).
 
-# Data catalogue
+# Folder Sturcture
 
 ```markdown
 📦
 ├── 🌍 European Space Agency (ESA)
-│   ├── 🚀 Globcolor
+│   ├── 🚀 Globcolor (4 km) [DAILY]
 │   │   ├── 🌈 Reflectance
-│   │   │   ├── RRS412
-│   │   │   ├── RRS443
-│   │   │   ├── RRS490
-│   │   │   ├── RRS555
-│   │   │   └── RRS670
-│   │   ├── 🅿️ PP
+│   │   │   ├── RRS412 (Remote Sensing Reflectance at 412 nm) [sr⁻¹]
+│   │   │   ├── RRS443 (Remote Sensing Reflectance at 443 nm) [sr⁻¹]
+│   │   │   ├── RRS490 (Remote Sensing Reflectance at 490 nm) [sr⁻¹]
+│   │   │   ├── RRS555 (Remote Sensing Reflectance at 555 nm) [sr⁻¹]
+│   │   │   └── RRS670 (Remote Sensing Reflectance at 670 nm) [sr⁻¹]
+│   │   ├── 🅿️ PP [mg C m⁻² d⁻¹]
 │   │   ├── 🔍 Optics
-│   │   │   ├── BBP (Backscattering coefficient)
-│   │   │   └── CDM (Colored Dissolved Organic Matter)
+│   │   │   ├── BBP (Backscattering coefficient) [m⁻¹]
+│   │   │   └── CDM (Colored Dissolved Organic Matter) [m⁻¹]
 │   │   ├── 📀 Transp
-│   │   │   ├── KD490 (Diffuse attenuation coefficient at 490 nm)
-│   │   │   ├── ZSD (Secchi disk depth)
-│   │   │   └── SPM (Suspended Particulate Matter)
+│   │   │   ├── KD490 (Diffuse attenuation coefficient at 490 nm) [m⁻¹]
+│   │   │   ├── ZSD (Secchi disk depth) [m]
+│   │   │   └── SPM (Suspended Particulate Matter) [g m⁻³]
 │   │   └── 🐠 Plankton
-│   │       ├── CHL (Chlorophyll concentration)
-│   │       ├── DIATO (Diatoms)
-│   │       ├── DINO (Dinoflagellates)
-│   │       ├── GREEN (Green algae)
-│   │       ├── HAPTO (Haptophytes)
-│   │       ├── MICRO (Microplankton)
-│   │       ├── NANO (Nanoplankton)
-│   │       ├── PICO (Picoplankton)
-│   │       ├── PROCHLO (Prochlorococcus)
-│   │       └── PROKAR (Prokaryotes)
-│   └── 🛰️ Sentinel
+│   │       ├── CHL (Chlorophyll concentration) [mg m⁻³]
+│   │       ├── DIATO (Diatoms) [mg m⁻³]
+│   │       ├── DINO (Dinoflagellates) [mg m⁻³]
+│   │       ├── GREEN (Green algae) [mg m⁻³]
+│   │       ├── HAPTO (Haptophytes) [mg m⁻³]
+│   │       ├── MICRO (Microplankton) [mg m⁻³]
+│   │       ├── NANO (Nanoplankton) [mg m⁻³]
+│   │       ├── PICO (Picoplankton) [mg m⁻³]
+│   │       ├── PROCHLO (Prochlorococcus) [mg m⁻³]
+│   │       └── PROKAR (Prokaryotes) [mg m⁻³]
+│   └── 🛰️ Sentinel (300 m) [DAILY]
 │       └── 📸 OLCI
-│           └── 🌊 CHL
+│           └── 🌊 CHL [mg m⁻³]
 ├── UK Met Office (UKMO)
-│   └── 🚀 OSTIA
-│       └── 🌡️ Temp
+│   └── 🚀 OSTIA (~ 5 km) [DAILY]
+│       └── 🌡️ Temp [°K]
 ├── 🚀 NASA
-│   ├── 🛰️ GHRSST
+│   ├── 🛰️ GHRSST (~1 km) [DAILY]
 │   │   └── 🌊 MUR
-│   │       └── 🌡️ SST
-│   └── 🛰️ MODIS
-│       ├── 🌊 POC
-│       ├── 🌊 PIC
-│       └── 🌞 PAR
+│   │       └── 🌡️ SST [°C]
+│   └── 🛰️ MODIS [MONTHLY]
+│       ├── 🌊 POC (Particulate Organic Carbon) [mg m⁻³]
+│       ├── 🌊 PIC (Particulate Inorganic Carbon) [mg m⁻³]
+│       └── 🌞 PAR (Photosynthetically Active Radiation) [Einstein m⁻² d⁻¹]
 └── Mercator Ocean International (MOI)
-    └── 🌐 MODEL
-        ├── 🐠 PISCES
+    └── 💻 MODEL
+        ├── 🐠 PISCES (~25 km) [DAILY]
         │   ├── 🧪 Bio
-        │   │   ├── Net Primary Production (nppv)
-        │   │   └── Oxygen (o2)
+        │   │   ├── Net Primary Production (NPPV) [mg C m⁻³ d⁻¹]
+        │   │   └── Oxygen (O2) [mmol O₂ m⁻³]
         │   ├── 🧪 Nut
-        │   │   ├── Iron (fe)
-        │   │   ├── Nitrate (no3)
-        │   │   ├── Phosphate (po4)
-        │   │   └── Silicate (si)
+        │   │   ├── Iron (Fe) [mmol Fe m⁻³]
+        │   │   ├── Nitrate (NO3) [mmol N m⁻³]
+        │   │   ├── Phosphate (PO4) [mmol P m⁻³]
+        │   │   └── Silicate (Si) [mmol Si m⁻³]
         │   ├── 🔍 Optics
-        │   │   └── Light Attenuation Coefficient (kd)
+        │   │   └── Light Attenuation Coefficient (KD) [m⁻¹]
         │   ├── 🌱 Car
-        │   │   ├── Dissolved Inorganic Carbon (dissic)
+        │   │   ├── Dissolved Inorganic Carbon (DIC) [mmol C m⁻³]
         │   │   ├── pH
-        │   │   └── Total Alkalinity (talk)
+        │   │   └── Total Alkalinity (TALK) [mmol eq m⁻³]
         │   ├── 🌬️ CO2
-        │   │   └── Partial Pressure of CO2 (spco2)
+        │   │   └── Partial Pressure of CO2 (pCO2) [Pa]
         │   └── 🌱 PFTs
-        │       ├── Chlorophyll (chl)
-        │       └── Phytoplankton (phyc)
-        ├── 🐟 SEAPODYM
+        │       ├── Chlorophyll (Chl) [mg m⁻³]
+        │       └── Phytoplankton (Phyc) [mmol m⁻³]
+        ├── 🐟 SEAPODYM (~ 9 km) [DAILY]
         │   └── 🌱 Biomass
-        │       ├── PP (Primary productivity)
-        │       └── ZOO (Zooplankton)
-        └── 🌊 NEMO
-            └── 💧 Salinity
+        │       ├── PP (Primary productivity) [mg C m⁻² d⁻¹]
+        │       └── ZOO (Zooplankton) [mg C m⁻²]
+        └── 🌊 NEMO (~ 9 km) [EVERY 6 HOUR]
+            └── 💧 Salinity [10⁻³]
 ```
 
 ## How to Run
@@ -136,5 +140,6 @@ This script was authored by **Md Rony Golder**.
 ## License
 
 This project is licensed under the **MIT License** - see the LICENSE file for details.
+
 
 
