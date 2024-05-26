@@ -1,14 +1,13 @@
-# Make virtual sensor with satellite data in CS
-There are numerous sensors currently deployed around Cockburn Sound (CS) that provide continuous data streams of oceanic and atmospheric parameters. These data streams are often accessible through data centers and agencies such as BOM, DWER, WAMSI, and UWA and so on. Despite these extensive monitoring efforts, in situ data may not always be available for specific areas of interest. For example, assessing the environmental impact of on going development activities (WESTPORT) requires data from regions outside of the immediate CS environment.
+# Make virtual sensor with satellite data in Cockburn Sound (CS)
+Cockburn Sound (CS) is monitored by numerous sensors providing continuous data on oceanic and atmospheric parameters. These data streams are accessible through various agencies such as BOM, DWER, WAMSI, and UWA and so on. However, in situ data may not always be available for specific areas of interest, especially for assessing the environmental impacts of ongoing development activities like WESTPORT.
 
-Setting up sensors in those locations is expensive, including the costs of purchase, deployment, and ongoing maintenance. 
-To address these challenges, using satellite data to create virtual sensors offers a viable solution for monitoring surface environmental conditions at locations where physical sensors cannot be installed. Satellite data can provide comprehensive and continuous coverage, overcoming the limitations of in situ sensor deployment and enabling effective environmental monitoring.
+Deploying sensors in such locations is costly, involving expenses for purchase, deployment, and maintenance. To overcome these challenges, virtual sensors using satellite data can be a viable solution. Satellite data provide comprehensive and continuous coverage, enabling effective environmental monitoring where physical sensors cannot be installed.
 
 ## About this repo
 This repository contains Python scripts designed to automate the downloading and processing of data from several key agencies: the *European Space Agency (ESA)*, *UK Met Office (UKMO)*, *NASA*, *Mercator Ocean International (MOI)*. The scripts are capable of retrieving long-term datasets for specified geographical areas [points, polygons] and time ranges, converting the data into CSV files, and scheduling the execution using GitHub Actions. The final processed data is then stored in the **Pawsey** S3 bucket.
 
 ## Data Source and Data Point Position
-- [Data point position in the Map](https://ronygolderku.github.io/cs_map/) Explore the data point positions on the interactive map.
+- Explore the data point positions on the interactive map: [Data point position in the Map](https://ronygolderku.github.io/cs_map/)
 
 ## Data Sources
 
