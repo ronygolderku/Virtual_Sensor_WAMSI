@@ -32,8 +32,10 @@ def process_and_upload_dataset(dataset_id, variables, output_name, s3_folder, po
             minimum_latitude=latitude,
             maximum_latitude=latitude,
             username=username,
-            password=password
-        )
+            password=password,
+            minimum_depth=0.4940253794193268,
+            maximum_depth=130.66598510742188)
+        
         data.to_dataframe().to_csv(f"{output_name}_point_{index + 1}.csv")
 
     # Upload files to S3
