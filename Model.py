@@ -32,7 +32,7 @@ def process_and_upload_dataset(dataset_id, variables, output_name, s3_folder, sh
         minimum_latitude=-32.77,
         maximum_latitude=-31.44,
         minimum_depth=0.4940253794193268,
-        maximum_depth=130.66598510742188)
+        maximum_depth=0.4940253794193268)
 
     # Process shapefiles
     for idx, shapefile in enumerate(shapefiles):
