@@ -17,14 +17,14 @@ jobs:
       matrix:
         script: [
           "Globcolor.py",
-          "Model.py",
-          # "Globcolor_points.py",
-          # "model_points.py",
-          # "sst.py",
-          # "sst_poly.py",
-          # "sentinel_point.py",
-          # "sentinel_offshore.py",
-          # "sentinel_nearshore.py"
+          #"Model.py",
+          "Globcolor_points.py",
+          "model_points.py",
+          "sst.py",
+          "sst_poly.py",
+          "sentinel_point.py",
+          "sentinel_offshore.py",
+          "sentinel_nearshore.py"
         ]
     steps:
       - name: Checkout repository
