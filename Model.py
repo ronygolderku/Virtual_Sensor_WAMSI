@@ -51,7 +51,13 @@ def upload_files_to_s3(s3_client, bucket_name, s3_folder):
         if file_name.endswith('.csv'):
             csv_file_path = os.path.join(file_name)
             try:
-                s3_client.upload_file(csv_file_path, bucket_name, os.path.join(s3_folder, file_name))
+                with open(csv_file_path, 'rb') as data:
+                    s3_client.put_object(
+                        Bucket=bucket_name,
+                        Key=os.path.join(s3_folder, file_name),
+                        Body=data,
+                        ContentLength=os.path.getsize(csv_file_path)
+                    )
                 print(f"File '{file_name}' uploaded to S3 bucket '{bucket_name}' in folder '{s3_folder}'.")
             except (NoCredentialsError, PartialCredentialsError) as e:
                 print(f"Error uploading file '{file_name}' to S3: {e}")
