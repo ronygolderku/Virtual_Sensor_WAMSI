@@ -38,7 +38,7 @@ def process_and_upload_dataset(dataset_id, variables, output_name, s3_folder, sh
         ds.rio.write_crs("epsg:4326", inplace=True)
         polygon = ds.rio.clip(gdf, crs="epsg:4326")
         polygon_mean = polygon.mean(dim=['latitude', 'longitude'])
-        polygon_mean = polygon_mean.drop_vars(['spatial_ref', 'Equirectangular'])
+        #polygon_mean = polygon_mean.drop_vars(['spatial_ref', 'Equirectangular'])
         polygon_mean.to_dataframe().to_csv(f"{output_name}_polygon_{idx+1}.csv")
 
     # Upload files to S3
