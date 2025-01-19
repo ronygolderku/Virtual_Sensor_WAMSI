@@ -7,7 +7,7 @@ on:
 
 jobs:
   run-scripts:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-22.04
     env:
       COPERNICUS_USERNAME: ${{ secrets.COPERNICUS_USERNAME }}
       COPERNICUS_PASSWORD: ${{ secrets.COPERNICUS_PASSWORD }}
