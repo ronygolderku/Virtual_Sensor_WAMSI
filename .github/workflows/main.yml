@@ -17,9 +17,9 @@ jobs:
       matrix:
         script: [
           "Globcolor.py",
-          #"Model.py",
+          "Model.py",
           "Globcolor_points.py",
-          #"model_points.py",
+          "model_points.py",
           "sst.py",
           "sst_poly.py",
           "sentinel_point.py",
