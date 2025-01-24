@@ -5,8 +5,8 @@ import pandas as pd
 import geopandas as gpd
 import rioxarray
 import boto3
-#from botocore.exceptions import ClientError
-from botocore.exceptions import NoCredentialsError, PartialCredentialsError
+from botocore.exceptions import ClientError
+#from botocore.exceptions import NoCredentialsError, PartialCredentialsError
 
 # Load environment variables
 username = os.getenv('COPERNICUS_USERNAME')
